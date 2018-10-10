@@ -203,6 +203,10 @@ class ProgressBar(object):
         from .termui import get_terminal_size
 
         if self.is_hidden:
+            if self._last_line != self.label:
+                self._last_line = self.label
+                echo(self.label, file=self.file, color=self.color, nl=False)
+                self.file.flush()
             return
 
         buf = []

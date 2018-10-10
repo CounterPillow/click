@@ -73,7 +73,7 @@ def test_progressbar_hidden(runner, monkeypatch):
 
     monkeypatch.setattr(time, 'time', fake_clock.time)
     monkeypatch.setattr(click._termui_impl, 'isatty', lambda _: False)
-    assert runner.invoke(cli, []).output == ''
+    assert runner.invoke(cli, []).output == label
 
 
 def test_choices_list_in_prompt(runner, monkeypatch):
